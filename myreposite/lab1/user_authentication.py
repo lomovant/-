@@ -2,7 +2,7 @@ import hashlib
 
 # Початковий словник користувачів (логін, хешований пароль, ПІБ)
 users = {
-    "alex123": {
+    "wulfiecs123": {
         "password": hashlib.md5("alex_under".encode()).hexdigest(),
         "full_name": "Lomov Anton"
     },
