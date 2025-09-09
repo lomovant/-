@@ -1,30 +1,31 @@
-# Початковий словник продуктів
+## -*- coding: utf-8 -*-
+
 inventory = {
-    "яблука": 10,
-    "банани": 3,
-    "молоко": 7,
-    "хліб": 2,
-    "яйця": 12
+    "apples": 10,
+    "bananas": 3,
+    "milk": 7,
+    "bread": 2,
+    "eggs": 12
 }
 
 def update_inventory(product, quantity):
-    """Оновлює словник інвентарю, додаючи або віднімаючи кількість продукту."""
+    """Update inventory by adding or subtracting product quantity."""
     if product in inventory:
         inventory[product] += quantity
         if inventory[product] < 0:
-            inventory[product] = 0  # Запобігаємо від'ємним значенням
+            inventory[product] = 0  # prevent negative values
     else:
         if quantity > 0:
-            inventory[product] = quantity  # Додаємо новий продукт
+            inventory[product] = quantity  # add new product
 
-# Тестові операції
-update_inventory("яблука", -4)  # Віднімаємо 4 яблука
-update_inventory("хліб", 3)  # Додаємо 3 хліба
-update_inventory("апельсини", 5)  # Додаємо новий продукт "апельсини"
+# Test operations
+update_inventory("apples", -4)   # remove 4 apples
+update_inventory("bread", 3)     # add 3 breads
+update_inventory("oranges", 5)   # add new product "oranges"
 
-# Список продуктів з кількістю менше ніж 5
+# Products with quantity less than 5
 low_stock_products = [product for product, count in inventory.items() if count < 5]
 
-# Вивід результатів
-print("Оновлений інвентар:", inventory)
-print("Продукти, яких менше ніж 5:", low_stock_products)
+# Print results
+print("Updated inventory:", inventory)
+print("Products with less than 5 units:", low_stock_products)
