@@ -1,41 +1,41 @@
-# Initial task dictionary
+# Початковий словник задач
 tasks = {
-    "Write report": "in progress",
-    "Check email": "done",
-    "Prepare presentation": "pending",
-    "Call client": "pending",
-    "Develop project plan": "in progress"
+    "Написати звіт": "в процесі",
+    "Перевірити пошту": "виконано",
+    "Підготувати презентацію": "очікує",
+    "Зателефонувати клієнту": "очікує",
+    "Розробити план проекту": "в процесі"
 }
 
-def add_task(task_name, status="pending"):
-    """Adds a new task with a status (default 'pending')."""
+def add_task(task_name, status="очікує"):
+    """Додає нову задачу зі статусом (за замовчуванням 'очікує')."""
     if task_name not in tasks:
         tasks[task_name] = status
     else:
-        print(f"Task '{task_name}' already exists.")
+        print(f"Задача '{task_name}' вже існує.")
 
 def remove_task(task_name):
-    """Removes a task if it exists."""
+    """Видаляє задачу, якщо вона існує."""
     if task_name in tasks:
         del tasks[task_name]
     else:
-        print(f"Task '{task_name}' not found.")
+        print(f"Задача '{task_name}' не знайдена.")
 
 def update_task_status(task_name, new_status):
-    """Updates the status of an existing task."""
+    """Оновлює статус існуючої задачі."""
     if task_name in tasks:
         tasks[task_name] = new_status
     else:
-        print(f"Task '{task_name}' not found.")
+        print(f"Задача '{task_name}' не знайдена.")
 
-# Test operations
-add_task("Buy office supplies")       # Add a new task
-update_task_status("Write report", "done")  # Update status
-remove_task("Check email")            # Remove a task
+# Тестові операції
+add_task("Купити канцелярію")  # Додаємо нову задачу
+update_task_status("Написати звіт", "виконано")  # Оновлюємо статус
+remove_task("Перевірити пошту")  # Видаляємо задачу
 
-# List of tasks with status "pending"
-pending_tasks = [task for task, status in tasks.items() if status == "pending"]
+# Список задач зі статусом "очікує"
+pending_tasks = [task for task, status in tasks.items() if status == "очікує"]
 
-# Output results
-print("Task list:", tasks)
-print("Pending tasks:", pending_tasks)
+# Вивід результатів
+print("Список задач:", tasks)
+print("Задачі, що очікують виконання:", pending_tasks)
