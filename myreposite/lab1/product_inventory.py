@@ -1,31 +1,36 @@
-## -*- coding: utf-8 -*-
+# Список продажів
+sales = [
+    {"продукт": "яблука", "кількість": 50, "ціна": 20},
+    {"продукт": "банани", "кількість": 30, "ціна": 25},
+    {"продукт": "молоко", "кількість": 40, "ціна": 30},
+    {"продукт": "хліб", "кількість": 60, "ціна": 15},
+    {"продукт": "яйця", "кількість": 100, "ціна": 10},
+    {"продукт": "апельсини", "кількість": 20, "ціна": 50}
+]
 
-inventory = {
-    "apples": 10,
-    "bananas": 3,
-    "milk": 7,
-    "bread": 2,
-    "eggs": 12
-}
 
-def update_inventory(product, quantity):
-    """Update inventory by adding or subtracting product quantity."""
-    if product in inventory:
-        inventory[product] += quantity
-        if inventory[product] < 0:
-            inventory[product] = 0  # prevent negative values
-    else:
-        if quantity > 0:
-            inventory[product] = quantity  # add new product
+def calculate_revenue(sales_list):
+    """Обчислює загальний дохід для кожного продукту."""
+    revenue_dict = {}
 
-# Test operations
-update_inventory("apples", -4)   # remove 4 apples
-update_inventory("bread", 3)     # add 3 breads
-update_inventory("oranges", 5)   # add new product "oranges"
+    for sale in sales_list:
+        product = sale["продукт"]
+        revenue = sale["кількість"] * sale["ціна"]
 
-# Products with quantity less than 5
-low_stock_products = [product for product, count in inventory.items() if count < 5]
+        if product in revenue_dict:
+            revenue_dict[product] += revenue
+        else:
+            revenue_dict[product] = revenue
 
-# Print results
-print("Updated inventory:", inventory)
-print("Products with less than 5 units:", low_stock_products)
+    return revenue_dict
+
+
+# Обчислення загального доходу
+revenue_dict = calculate_revenue(sales)
+
+# Список продуктів, що принесли дохід більше ніж 1000
+high_revenue_products = [product for product, revenue in revenue_dict.items() if revenue > 1000]
+
+# Вивід результатів
+print("Загальний дохід по продуктах:", revenue_dict)
+print("Продукти, що принесли дохід більше 1000:", high_revenue_products)
