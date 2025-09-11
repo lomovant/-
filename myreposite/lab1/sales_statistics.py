@@ -1,21 +1,21 @@
-# Sales list
+# Список продажів
 sales = [
-    {"product": "apples", "quantity": 50, "price": 20},
-    {"product": "bananas", "quantity": 30, "price": 25},
-    {"product": "milk", "quantity": 40, "price": 30},
-    {"product": "bread", "quantity": 60, "price": 15},
-    {"product": "eggs", "quantity": 100, "price": 10},
-    {"product": "oranges", "quantity": 20, "price": 50}
+    {"продукт": "яблука", "кількість": 50, "ціна": 20},
+    {"продукт": "банани", "кількість": 30, "ціна": 25},
+    {"продукт": "молоко", "кількість": 40, "ціна": 30},
+    {"продукт": "хліб", "кількість": 60, "ціна": 15},
+    {"продукт": "яйця", "кількість": 100, "ціна": 10},
+    {"продукт": "апельсини", "кількість": 20, "ціна": 50}
 ]
 
 
 def calculate_revenue(sales_list):
-    """Calculates total revenue for each product."""
+    """Обчислює загальний дохід для кожного продукту."""
     revenue_dict = {}
 
     for sale in sales_list:
-        product = sale["product"]
-        revenue = sale["quantity"] * sale["price"]
+        product = sale["продукт"]
+        revenue = sale["кількість"] * sale["ціна"]
 
         if product in revenue_dict:
             revenue_dict[product] += revenue
@@ -25,12 +25,12 @@ def calculate_revenue(sales_list):
     return revenue_dict
 
 
-# Calculate total revenue
+# Обчислення загального доходу
 revenue_dict = calculate_revenue(sales)
 
-# List of products with revenue greater than 1000
+# Список продуктів, що принесли дохід більше ніж 1000
 high_revenue_products = [product for product, revenue in revenue_dict.items() if revenue > 1000]
 
-# Output results
-print("Total revenue by product:", revenue_dict)
-print("Products with revenue greater than 1000:", high_revenue_products)
+# Вивід результатів
+print("Загальний дохід по продуктах:", revenue_dict)
+print("Продукти, що принесли дохід більше 1000:", high_revenue_products)
