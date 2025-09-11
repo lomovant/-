@@ -1,6 +1,6 @@
 import hashlib
 
-# Початковий словник користувачів (логін, хешований пароль, ПІБ)
+# Initial dictionary of users (login, hashed password, full name)
 users = {
     "wulfiecs123": {
         "password": hashlib.md5("alex_under".encode()).hexdigest(),
@@ -8,24 +8,27 @@ users = {
     },
     "user456": {
         "password": hashlib.md5("petrenko".encode()).hexdigest(),
-        "full_name": "Іван Петренко"
+        "full_name": "Ivan Petrenko"
     }
 }
 
 def check_password(login, input_password):
-    """Перевіряє введений пароль користувача."""
+    """Checks the user's entered password."""
     if login in users:
         hashed_input = hashlib.md5(input_password.encode()).hexdigest()
         if hashed_input == users[login]["password"]:
-            print(f"Вітаємо, {users[login]['full_name']}! Вхід виконано успішно.")
+            print(f"Welcome, {users[login]['full_name']}! Login successful.")
         else:
-            print("Невірний пароль.")
+            print("Incorrect password.")
     else:
-        print("Користувача не знайдено.")
+        print("User not found.")
 
-# Введення даних користувачем
-login = input("Введіть логін: ")
-password = input("Введіть пароль: ")
+# User input
+login = input("Enter login: ").strip()
+password = input("Enter password: ").strip()
 
-# Перевірка пароля
+# Password check
+check_password(login, password)
+
+
 check_password(login, password)
